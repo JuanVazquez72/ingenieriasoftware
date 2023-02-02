@@ -32,7 +32,7 @@ public class MYSQL extends BD{
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn =DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/sistemaescolar","root","");
+                    "jdbc:mysql://localhost:3306/prueba","root","Holaamigos123");
          
             System.out.println("Connected"); 
              
@@ -55,16 +55,21 @@ public class MYSQL extends BD{
         try {
             consulta = con.createStatement();
             
-            rs = consulta.executeQuery("SELECT * FROM carreras");
-
-            if (rs.next())  {
-
-                String a = rs.getString(1);
-                System.out.println("nombre: "+a+ " columna: " +rs.getRow());
+            rs = consulta.executeQuery("SELECT * FROM alumnos");
+            int i = 1;
             
+
+            while(rs.next()){
+                String a = rs.getString(i);
+                System.out.println("nombre: "+a+ " columna: " +rs.getRow());
+               
 
 
             }
+
+
+
+            
 
          
 
