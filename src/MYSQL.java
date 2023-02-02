@@ -30,9 +30,9 @@ public class MYSQL extends BD{
 
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn =DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/prueba","admin","123");
+                    "jdbc:mysql://localhost:3306/sistemaescolar","root","");
          
             System.out.println("Connected"); 
              
@@ -55,7 +55,7 @@ public class MYSQL extends BD{
         try {
             consulta = con.createStatement();
             
-            rs = consulta.executeQuery("SELECT * FROM alumnos");
+            rs = consulta.executeQuery("SELECT * FROM carreras");
 
             if (rs.next())  {
 
@@ -78,6 +78,28 @@ public class MYSQL extends BD{
 
     }
     public void Escribir(Connection con){
+ 
+      Statement consulta = null;
+        
+        try {
+
+            consulta = con.createStatement();
+            String ra = "INSERT INTO carreras " + "VALUES (202, 'Mate', 'sumar')";
+            consulta.executeUpdate(ra);
+
+            System.out.println("Registro agregado");
+
+        } catch (Exception e) {
+            
+            System.out.println(e);
+        }
+
+       
+        
+
+
+
+
 
     }
     public void Cerrar(Connection con) throws SQLException{

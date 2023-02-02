@@ -9,6 +9,7 @@ public class App {
         
        Connection conexiónbase1 =base1.conectarBD();
        base1.Leer(conexiónbase1);
+       base1.Escribir(conexiónbase1);
        //base1.Cerrar(conexiónbase1);
        base2.conectarBD();
        
