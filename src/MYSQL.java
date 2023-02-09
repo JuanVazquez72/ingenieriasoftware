@@ -115,4 +115,32 @@ public class MYSQL extends BD{
          }
          
     }
+
+    public String selecionar(String Selecionar){
+		Connector Connectador = new Connector(); 
+		Connection con = Connectador.miconexion("localhost:3306","testing1","root","testing123!");
+		try{
+				/*jdbc es java data base conection, pones el hoast en nuestro caso es el local
+				pones el puerto y al final el nombre de la base de datos luego , usuario , contra*/
+				String querry = "select * from "+ Selecionar;
+				System.out.println(querry);
+				//creo que este se encarga de los querrys
+				Statement st = con.createStatement();
+				// result set tiene el conjunto de resultados de un mysql queryy
+				ResultSet rs = st.executeQuery(querry);
+				while (rs.next()){
+					int id = rs.getInt("cod_comida");
+					//System.out.println(id);
+					String nombre = rs.getString("nombre");
+					//System.out.println(nombre);
+					Date dateCreated = rs.getDate("fecha");
+					Time timeCreated = rs.getTime("tiempo");
+				System.out.println(id+nombre+dateCreated+timeCreated);
+				}
+				con.close();
+			}catch(Exception ex){
+				System.out.println(ex);
+			}
+			return "terminado";
+		}
 }
